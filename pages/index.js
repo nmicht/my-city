@@ -1,6 +1,11 @@
+
+import MyCityMap from '../components/map'
+
 function Home() {
   return (
-    <div>ola ke ase</div>
+    <section>
+      <MyCityMap />
+    </section>
   )
 }
 
