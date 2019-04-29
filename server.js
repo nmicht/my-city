@@ -12,8 +12,7 @@ mongoose.connect('mongodb://admin:349603@ds211440.mlab.com:11440/ombudsbot');
 
 const IssueModel = mongoose.model('IssueModel', {
   issueId: String,
-  infrastructureIssueType: String,
-  conmmunityIssueType: String,
+  type: String,
   issueImage: String,
   issueDescription: String,
   latitude: String,
@@ -70,8 +69,7 @@ app.prepare().then(async () => {
 
     const issue = new IssueModel({
       issueId: randomString(8, charsOfID),
-      infrastructureIssueType: req.body.INFRA_ISSUE_TYPE,
-      conmmunityIssueType: req.body.COMMUNITY_ISSUE_TYPE,
+      type: req.body.ISSUE_TYPE,
       issueImage: req.body.ISSUE_IMAGE,
       issueDescription: req.body.ISSUE_DESCRIPTION,
       latitude: req.body.latitude,
