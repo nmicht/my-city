@@ -5,7 +5,9 @@ const multer = require('multer');
 const upload = multer();
 const mongoose = require('mongoose');
 const axios = require('axios');
+const dotenv = require('dotenv')
 
+dotenv.config()
 mongoose.connect('mongodb://admin:349603@ds211440.mlab.com:11440/ombudsbot');
 
 const IssueModel = mongoose.model('IssueModel', {
@@ -42,11 +44,17 @@ const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const handle = app.getRequestHandler()
 const port = process.env.PRODUCTION_PORT ? process.env.PRODUCTION_PORT : 3000
 
+const setApiKey = function (req, res, next) {
+  req.api_key = process.env.api_key;
+  next();
+};
+
 app.prepare().then(async () => {
   await app.prepare()
   const server = express()
 
   server.use(bodyParser.json());
+  server.use(setApiKey);
   server.use(bodyParser.urlencoded({ extended: true }));
 
   server.use(function (req, res, next) {
@@ -178,6 +186,7 @@ app.prepare().then(async () => {
   server.get('*', (req, res) => {
     handle(req, res)
   })
+
 
   await server.listen(port)
   console.log(`> Ready on http://localhost:${port}`)

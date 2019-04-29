@@ -9,11 +9,13 @@ const Layout = styled.div`
   bottom: 0;
 `
 
-function MyCityMap() {
+function MyCityMap({ apiKey }) {
   return (
     <Layout>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyD3w97FWMqNaka6WZwsZeZJ-4J2gRcb6VI' }}
+        bootstrapURLKeys={{
+          key: apiKey,
+        }}
         center={{
           lat: 19.413764,
           lng: -99.164916,

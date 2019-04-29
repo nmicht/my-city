@@ -22,11 +22,11 @@ const Layout = styled.div`
 `
 
 class Home extends Component {
-  // static getInitialProps(req) {
-  //   return {
-  //     req.coo
-  //   }
-  // }
+  static getInitialProps({ req }) {
+    return {
+      apiKey: req.api_key
+    }
+  }
   render() {
     return (
       <Layout>
@@ -35,7 +35,7 @@ class Home extends Component {
         </header>
         <Sidebar />
         <div className="map-container">
-          <MyCityMap />
+          <MyCityMap apiKey={this.props.apiKey} />
         </div>
       </Layout>
     )
