@@ -2,15 +2,18 @@ import GoogleMapReact from 'google-map-react'
 import styled from 'styled-components'
 
 const Layout = styled.div`
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 `
 
 function MyCityMap() {
   return (
     <Layout>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyBmjjxlGKDQ8MTVo5gtWKzYgBBgy4JNyWY' }}
+        bootstrapURLKeys={{ key: 'AIzaSyD3w97FWMqNaka6WZwsZeZJ-4J2gRcb6VI' }}
         center={{
           lat: 19.413764,
           lng: -99.164916,
